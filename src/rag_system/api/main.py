@@ -7,6 +7,11 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException, UploadFile
 from src.rag_system.api.models import QueryRequest, QueryResponse, IngestResponse
 from src.rag_system.evaluation.trulens_evaluator import SimulatedEvaluator
+from src.rag_system.generation.ollama_client import OllamaClient
+from src.rag_system.generation.rag_engine import RAGQueryEngine
+from src.rag_system.vector_store.milvus_client import MilvusVectorStore
+from src.rag_system.ingestion.embeddings import EmbeddingService
+from src.rag_system.config import Settings
 
 logger = logging.getLogger(__name__)
 
@@ -17,21 +22,31 @@ app = FastAPI(
     version="0.1.0",
 )
 
+# Initialize settings
+settings = Settings()
+
+# Initialize RAG components
+ollama_client = OllamaClient(base_url=settings.ollama_url, model=settings.model_name)
+vector_store = MilvusVectorStore(
+    host=settings.milvus_host, port=settings.milvus_port, collection_name="documents"
+)
+embedding_service = EmbeddingService(ollama_url=settings.ollama_url, model=settings.embedding_model)
+
+# Initialize RAG engine
+rag_engine = RAGQueryEngine(
+    ollama=ollama_client, vector_store=vector_store, embeddings=embedding_service
+)
+
 # Initialize evaluator
 evaluator = SimulatedEvaluator()
 
 
-# Placeholder for RAG engine (will be initialized in Task 5)
-# For now, we'll create a mock that will be replaced later
-class MockRAGEngine:
-    """Mock RAG engine for testing purposes."""
-
-    async def query(self, query: str, top_k: int) -> dict:
-        """Mock query method."""
-        return {"answer": "Mock answer for testing", "sources": [], "retrieved_count": 0}
-
-
-rag_engine = MockRAGEngine()
+# Store components in app.state for easier mocking in tests
+@app.on_event("startup")
+async def startup_event():
+    """Store components in app.state for testing."""
+    app.state.rag_engine = rag_engine
+    app.state.evaluator = evaluator
 
 
 @app.get("/")
