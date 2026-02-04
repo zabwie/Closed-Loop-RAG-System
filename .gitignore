@@ -155,3 +155,6 @@ Thumbs.db
 
 # Milvus data
 milvus_data/
+
+# Sisyphus
+.sisyphus/
