@@ -1,6 +1,5 @@
 """Document ingestion module."""
 
-from .markitdown_converter import MarkitdownConverter
-from .chunker import Chunker
+from .markitdown_converter import MarkItDownConverter
 
-__all__ = ["MarkitdownConverter", "Chunker"]
+__all__ = ["MarkItDownConverter"]
