@@ -1,5 +1,5 @@
 """Evaluation module."""
 
-from .trulens_evaluator import TruLensEvaluator
+from .trulens_evaluator import SimulatedEvaluator
 
-__all__ = ["TruLensEvaluator"]
+__all__ = ["SimulatedEvaluator"]
