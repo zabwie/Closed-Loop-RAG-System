@@ -1,0 +1,11 @@
+id,name,category,value,description
+1,Alpha,Category A,100,First item in the dataset
+2,Beta,Category B,200,Second item in the dataset
+3,Gamma,Category A,150,Third item in the dataset
+4,Delta,Category C,300,Fourth item in the dataset
+5,Epsilon,Category B,250,Fifth item in the dataset
+6,Zeta,Category A,175,Sixth item in the dataset
+7,Eta,Category C,350,Seventh item in the dataset
+8,Theta,Category B,225,Eighth item in the dataset
+9,Iota,Category A,125,Ninth item in the dataset
+10,Kappa,Category C,275,Tenth item in the dataset
