@@ -2,6 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Coverage](https://img.shields.io/badge/Coverage-%3E80%25-brightgreen.svg)
 
 ## Overview
 
@@ -61,6 +62,32 @@ A production-ready RAG (Retrieval-Augmented Generation) system with automated ev
    http://localhost:8501
    ```
 
+## Clone and Run from GitHub
+
+Get started quickly by cloning the repository from GitHub:
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/rag-system.git
+cd rag-system
+
+# Start all services
+docker-compose up -d
+
+# Wait for services to initialize (approximately 20 seconds)
+sleep 20
+
+# Download required Ollama models
+docker-compose exec ollama ollama pull llama3:8b nomic-embed-text
+
+# Verify services are running
+docker-compose ps
+```
+
+Once services are running, you can ingest documents and query the system using the API endpoints documented below.
+
+> **Note**: For detailed deployment instructions, including GitHub repository setup, authentication, and advanced configuration, see [GITHUB_DEPLOYMENT.md](GITHUB_DEPLOYMENT.md).
+
 ## Setup Instructions
 
 ### Prerequisites
@@ -74,8 +101,14 @@ A production-ready RAG (Retrieval-Augmented Generation) system with automated ev
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd RAG
+   # Clone via HTTPS
+   git clone https://github.com/YOUR_USERNAME/rag-system.git
+
+   # Or clone via SSH
+   git clone git@github.com:YOUR_USERNAME/rag-system.git
+
+   # Navigate into the project directory
+   cd rag-system
    ```
 
 2. **Configure environment variables** (optional):
@@ -98,6 +131,8 @@ A production-ready RAG (Retrieval-Augmented Generation) system with automated ev
    ```bash
    docker-compose exec ollama ollama pull llama3:8b nomic-embed-text
    ```
+
+> **For detailed GitHub deployment instructions**, including repository creation, authentication, and advanced setup, see [GITHUB_DEPLOYMENT.md](GITHUB_DEPLOYMENT.md).
 
 ### Local Development Setup
 
