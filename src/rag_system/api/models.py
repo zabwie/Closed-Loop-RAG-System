@@ -18,3 +18,13 @@ class QueryResponse(BaseModel):
     sources: list = Field(..., description="List of retrieved sources")
     retrieved_count: int = Field(..., description="Number of documents retrieved")
     evaluation: dict = Field(..., description="Evaluation metrics for the response")
+
+
+class IngestResponse(BaseModel):
+    """Response model for document ingestion."""
+
+    document_id: str = Field(..., description="Unique identifier for the ingested document")
+    status: str = Field(..., description="Ingestion status (completed/failed)")
+    chunk_count: int | None = Field(None, description="Number of chunks created")
+    source: str | None = Field(None, description="Source filename")
+    error: str | None = Field(None, description="Error message if ingestion failed")

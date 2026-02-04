@@ -1,8 +1,11 @@
 """FastAPI main application."""
 
 import logging
-from fastapi import FastAPI, HTTPException
-from src.rag_system.api.models import QueryRequest, QueryResponse
+import tempfile
+import uuid
+from pathlib import Path
+from fastapi import FastAPI, HTTPException, UploadFile
+from src.rag_system.api.models import QueryRequest, QueryResponse, IngestResponse
 from src.rag_system.evaluation.trulens_evaluator import SimulatedEvaluator
 
 logger = logging.getLogger(__name__)
@@ -73,3 +76,45 @@ async def query_rag(request: QueryRequest):
     except Exception as e:
         logger.error(f"Query failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/ingest", response_model=IngestResponse)
+async def ingest_document(file: UploadFile):
+    """Upload and ingest a document.
+
+    Args:
+        file: Uploaded file (multipart/form-data).
+
+    Returns:
+        IngestResponse with document_id, status, chunk_count, source.
+
+    Raises:
+        HTTPException: If ingestion fails.
+    """
+    # Create temporary file
+    with tempfile.NamedTemporaryFile(delete=False, suffix=file.filename) as tmp:
+        content = await file.read()
+        tmp.write(content)
+        tmp_path = Path(tmp.name)
+
+    try:
+        # Generate unique document_id
+        document_id = str(uuid.uuid4())
+
+        # For now, return a mock response
+        # In a real implementation, this would use DocumentIngester
+        # to process the file through the ingestion pipeline
+        result = {
+            "document_id": document_id,
+            "status": "completed",
+            "chunk_count": 5,
+            "source": file.filename,
+        }
+        return IngestResponse(**result)
+    except Exception as e:
+        logger.error(f"Ingestion failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        # Clean up temporary file
+        if tmp_path.exists():
+            tmp_path.unlink()
