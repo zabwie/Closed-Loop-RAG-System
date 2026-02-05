@@ -16,7 +16,7 @@ Before contributing, ensure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/zabwie/Closed-Loop-RAG-System
 cd RAG
 ```
 
@@ -155,7 +155,7 @@ We follow the TDD workflow:
 Fork the repository on GitHub and clone your fork:
 
 ```bash
-git clone https://github.com/<your-username>/RAG.git
+git clone https://github.com/zabwie/Closed-Loop-RAG-System
 cd RAG
 ```
 
