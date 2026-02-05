@@ -132,8 +132,6 @@ Once services are running, you can ingest documents and query the system using t
    docker-compose exec ollama ollama pull llama3:8b nomic-embed-text
    ```
 
-> **For detailed GitHub deployment instructions**, including repository creation, authentication, and advanced setup, see [GITHUB_DEPLOYMENT.md](GITHUB_DEPLOYMENT.md).
-
 ### Local Development Setup
 
 1. **Install Python dependencies**:
@@ -536,3 +534,5 @@ Contributions are welcome! Please follow these guidelines:
 - **Ollama**: LLM and embedding service
 - **TruLens**: Evaluation framework
 - **MarkItDown**: Document conversion library
+
+> **Songs listened during the making**: 11:11 (Roa), PPC (ROA, Hades66), MAMI 100PRE SABE (interlude) (Alvaro Diaz, Nsqk)
