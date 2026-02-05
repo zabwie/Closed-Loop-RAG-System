@@ -68,7 +68,7 @@ Get started quickly by cloning the repository from GitHub:
 
 ```bash
 # Clone the repository
-git clone https://github.com/zabwie/rag-system.git
+git clone https://github.com/zabwie/Closed-Loop-RAG-System
 cd rag-system
 
 # Start all services
@@ -102,10 +102,10 @@ Once services are running, you can ingest documents and query the system using t
 1. **Clone the repository**:
    ```bash
    # Clone via HTTPS
-   git clone https://github.com/zabwie/rag-system.git
+   git clone https://github.com/zabwie/Closed-Loop-RAG-System
 
    # Or clone via SSH
-   git clone git@github.com:zabwie/rag-system.git
+   git clone git@github.com:zabwie/Closed-Loop-RAG-System
 
    # Navigate into the project directory
    cd rag-system
