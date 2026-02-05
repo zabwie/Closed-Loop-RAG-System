@@ -86,8 +86,6 @@ docker-compose ps
 
 Once services are running, you can ingest documents and query the system using the API endpoints documented below.
 
-> **Note**: For detailed deployment instructions, including GitHub repository setup, authentication, and advanced configuration, see [GITHUB_DEPLOYMENT.md](GITHUB_DEPLOYMENT.md).
-
 ## Setup Instructions
 
 ### Prerequisites
